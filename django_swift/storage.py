@@ -1,4 +1,5 @@
 #encoding:utf-8
+import os
 import swiftclient
 from django.conf import settings
 from django.core.files.storage import Storage
@@ -157,7 +158,7 @@ class SwiftStorage(Storage):
         Returns an absolute URL where the content of each file can be
         accessed directly by a web browser.
         """
-        return "{0}/{1}".format(self.base_url, name)
+        return os.path.join(self.base_url, name)
 
     def listdir(self, path):
         """
