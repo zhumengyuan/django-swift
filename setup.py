@@ -13,7 +13,7 @@ requires = [
 # Use part of the sphinx docs index for the long description
 
 setup(
-    name="django-swift",
+    name="django_swift",
     version='0.9.1',
     packages=find_packages(),
     install_requires=requires,
@@ -22,7 +22,7 @@ setup(
     author="duanhongyi",
     author_email="duanhongyi@doopai.com",
     license="BSD",
-    url="https://github.com/duanhongyi/django-swift/",
+    url="https://github.com/duanhongyi/django_swift/",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
