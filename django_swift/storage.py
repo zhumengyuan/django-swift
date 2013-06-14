@@ -38,6 +38,7 @@ class SwiftclientStorageFile(File):
         )
         return data
 
+
     def read(self):
         """
         Reads specified chunk_size or the whole file if chunk_size is None.
