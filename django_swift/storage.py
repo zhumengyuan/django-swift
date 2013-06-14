@@ -29,25 +29,24 @@ class SwiftclientStorageFile(File):
         except BaseException:
             return 0
 
+    def __iter__(self, chunk_size=1024):
+        _, data = self.connection.get_object(
+            self.container_name,
+            self.name,
+            resp_chunk_size=chunk_size,
+        )
+        return data
 
-    def read(self, chunk_size=-1):
+    def read(self):
         """
         Reads specified chunk_size or the whole file if chunk_size is None.
         """
-        if self._pos == self.size() or chunk_size == 0:
-            return ""
-
-        if chunk_size < 0:
-            _, data = self.connection.get_object(
-                self.container_name,
-                self.name,
-            )
-        else:
-            _, data = self.connection.get_object(
-                self.container_name,
-                self.name,
-                resp_chunk_size=chunk_size
-            )
+        if self.pos > 0:
+            return ''
+        _, data = self.connection.get_object(
+            self.container_name,
+            self.name,
+        )
         self._pos += len(data)
         return data
 
@@ -63,9 +62,6 @@ class SwiftclientStorageFile(File):
     @property
     def closed(self):
         return not hasattr(self, "_file")
-
-    def seek(self, pos):
-        self._pos = pos
 
 
 class SwiftStorage(Storage):
