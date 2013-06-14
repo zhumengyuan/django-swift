@@ -23,6 +23,7 @@ setup(
     author_email="duanhongyi@doopai.com",
     license="BSD",
     url="https://github.com/duanhongyi/django_swift/",
+    include_package_data=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
