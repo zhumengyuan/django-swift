@@ -11,7 +11,7 @@ def download(request, name):
         return StreamingHttpResponse(iter(f))
     except BaseException as e:
         response = HttpResponse()   
-        if hasattr('http_status', e):
+        if hasattr(e, 'http_status'):
             response.status_code = e.http_status
         else:
             response.status_code = 500
