@@ -14,7 +14,7 @@ requires = [
 
 setup(
     name="django-swift",
-    version='0.9',
+    version='0.9.1',
     packages=find_packages(),
     install_requires=requires,
     description = 'a django storage for swift',
