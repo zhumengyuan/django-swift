@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
+import os
 from setuptools import setup, find_packages
+
+here = os.path.abspath(os.path.dirname(__file__))
+README = open(os.path.join(here, 'README.txt')).read()
 
 requires = [
     'python-swiftclient',
@@ -13,10 +17,12 @@ setup(
     version='0.9',
     packages=find_packages(),
     install_requires=requires,
+    description = 'a django storage for swift',
+    long_description=README,
     author="duanhongyi",
     author_email="duanhongyi@doopai.com",
     license="BSD",
-    url="https://github.com/swift/django-swift/",
+    url="https://github.com/duanhongyi/django-swift/",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
