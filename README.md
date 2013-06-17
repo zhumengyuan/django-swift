@@ -1,7 +1,7 @@
 django_swift
 ============
 
-django swift storage
+django_swift is a storage backend for django
 
 django setings.py demo
 ============
