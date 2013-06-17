@@ -15,8 +15,13 @@ django setings.py demo
 * SWIFT_PREAUTHTOKEN = None
 * SWIFT_SNET = False
 * SWIFT_STARTING_BACKOFF = 1
-* SWIFT_TENANT_NAME = None)
+* SWIFT_TENANT_NAME = None
 * SWIFT_OS_OPTIONS = None
 * SWIFT_AUTH_VERSION = "1"
 * SWIFT_CACERT = None
 * SWIFT_INSECURE = False
+
+django url settings
+====================
+* set in url.py: url('^media/([\w|.|/]+)', "django_swift.views.download")
+* set in settings.py: MEDIA_URL = '/media/'
