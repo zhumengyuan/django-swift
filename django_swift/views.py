@@ -8,7 +8,7 @@ logger = logging.getLogger()
 def download(request, name):
     try:
         request_headers = {}
-        for key, value request.META.viewitems():
+        for key, value in request.META.viewitems():
             request_headers[key.replace('_', '-')] = value
         f = default_storage.open(name)
         headers, data = f.connection.get_object(
