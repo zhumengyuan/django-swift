@@ -4,8 +4,6 @@ from django.http.response import StreamingHttpResponse, HttpResponse
 
 
 logger = logging.getLogger()
-
-
 ACCEPT_HEADERS = ['Accept', 'Accept-Encoding', 'Accept-Language', 'Range']
 
 
