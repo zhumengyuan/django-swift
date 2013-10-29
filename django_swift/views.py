@@ -20,8 +20,9 @@ def download(request, name):
     try:
         request_headers = {}
         for key in ACCEPT_HEADERS:
-            if key.replace('-', '_').upper() in request.META:
-                request_headers[key] = request.META[key]
+            meta_key = key.replace('-', '_').upper()
+            if meta_key in request.META:
+                request_headers[key] = request.META[meta_key]
         f = default_storage.open(name)
         headers, data = f.connection.get_object(
             f.container_name,
