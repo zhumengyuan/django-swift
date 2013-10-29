@@ -6,14 +6,7 @@ from django.http.response import StreamingHttpResponse, HttpResponse
 logger = logging.getLogger()
 
 
-ACCEPT_HEADERS = [
-    'Accept',
-    'Accept-Encoding',
-    'Accept-Language',
-    'Cache-Control',
-    'Pragma',
-    'Range',
-]
+ACCEPT_HEADERS = ['Accept', 'Accept-Encoding', 'Accept-Language', 'Range']
 
 
 def download(request, name):
