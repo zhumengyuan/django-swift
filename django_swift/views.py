@@ -5,27 +5,38 @@ from django.http.response import StreamingHttpResponse, HttpResponse
 
 logger = logging.getLogger()
 
+
+ACCEPT_HEADERS = [
+    'Accept',
+    'Accept-Encoding',
+    'Accept-Language',
+    'Cache-Control',
+    'Pragma',
+    'Range',
+]
+
+
 def download(request, name):
     try:
         request_headers = {}
-        if 'Range' in request.META:
-            request_headers['Range'] = request.META['Range']
+        for key in ACCEPT_HEADERS:
+            if key.replace('-', '_').upper() in request.META:
+                request_headers[key] = request.META[key]
         f = default_storage.open(name)
         headers, data = f.connection.get_object(
             f.container_name,
             f.name,
-            resp_chunk_size = 1024 * 1024,
-            headers = request_headers
+            resp_chunk_size=1024 * 1024,
+            headers=request_headers
         )
         response = StreamingHttpResponse(data)
         for item in headers.viewitems():
             response[item[0]] = item[1]
     except BaseException as e:
-        response = HttpResponse()   
+        response = HttpResponse()
         if hasattr(e, 'http_status'):
             response.status_code = e.http_status
         else:
             response.status_code = 500
             logger.exception(e)
     return response
-    
