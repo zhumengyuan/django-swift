@@ -9,7 +9,7 @@ def download(request, name):
     try:
         request_headers = {}
         for key, value in request.META.viewitems():
-            request_headers[key.replace('_', '-')] = str(value).strip()
+            request_headers[key.replace('_', '-')] = str(value).strip().lower()
         f = default_storage.open(name)
         headers, data = f.connection.get_object(
             f.container_name,
